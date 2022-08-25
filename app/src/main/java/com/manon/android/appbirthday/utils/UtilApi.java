@@ -15,7 +15,7 @@ import okhttp3.Response;
 
 public class UtilApi {
 
-    public static final String URL_LOGIN = "http://10.0.2.2:8080/login";
+    public static final String URL_LOGIN = "http://192.168.1.10:8080/users/login";
 
     public static OkHttpClient client = new OkHttpClient();
 
@@ -55,7 +55,8 @@ public class UtilApi {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                callback.fail("error");
+                System.out.println(e.getMessage());
+                callback.fail("error : failure");
             }
 
             @Override
@@ -63,7 +64,8 @@ public class UtilApi {
                 if (response.isSuccessful())
                     callback.success(response.body().string());
                 else {
-                    callback.fail("error");
+                    System.out.println(response);
+                    callback.fail("error response not successful");
                 }
             }
         });

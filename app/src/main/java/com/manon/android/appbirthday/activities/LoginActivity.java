@@ -1,5 +1,7 @@
 package com.manon.android.appbirthday.activities;
 
+import static com.manon.android.appbirthday.utils.UtilApi.URL_LOGIN;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.manon.android.appbirthday.R;
 import com.manon.android.appbirthday.utils.ApiCallback;
 import com.manon.android.appbirthday.utils.Util;
+import com.manon.android.appbirthday.utils.UtilApi;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,12 +69,14 @@ public class LoginActivity extends AppCompatActivity implements ApiCallback {
         mPasswordView.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 // TODO : appeler la méthode pour tenter le login
+                attemptLogin();
             }
             return false;
         });
 
         mLoginFormView.setOnClickListener(v -> {
             // TODO : appeler la méthode pour tenter le login
+            attemptLogin();
         });
     }
 
@@ -108,10 +113,12 @@ public class LoginActivity extends AppCompatActivity implements ApiCallback {
             showProgress(true);
 
             Map<String, String> map = new HashMap<>();
-            map.put("username", email);
+            map.put("email", email);
             map.put("password", password);
 
+
             // TODO : Appeler la méthode permettant de faire un appel API via POST
+            UtilApi.post(URL_LOGIN,map,LoginActivity.this);
 
         }
     }

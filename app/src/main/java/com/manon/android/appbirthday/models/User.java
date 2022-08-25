@@ -3,6 +3,8 @@ package com.manon.android.appbirthday.models;
 import android.content.Context;
 import android.util.Log;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.manon.android.appbirthday.utils.Util;
 
 import org.json.JSONArray;
@@ -14,23 +16,22 @@ import java.util.ArrayList;
 
 public class User {
 
+    @SerializedName("id")
+    @Expose
     public Long id;
+    @SerializedName("username")
+    @Expose
     public String username;
+    @SerializedName("email")
+    @Expose
     public String email;
-
+    @SerializedName("birthdays")
+    @Expose
     public ArrayList<Birthday> birthdays;
 
     public String stringJson;
 
-    //{"id":1,"username":"peter","email":"peter.bardu@gmail.com", "birthdays": [
-    //        {
-    //            "date": "1988-02-02",
-    //            "firstName": "Peter",
-    //            "lastName": "Bardu"
-    //        }
-    //    ]
-    // }
-    public User(String json) throws JSONException, ParseException {
+/*    public User(String json) throws JSONException, ParseException {
 
         stringJson = json;
 
@@ -44,7 +45,7 @@ public class User {
         for (int i = 0; i < jsonArray.length(); i++) {
             birthdays.add(new Birthday(jsonObject.getJSONArray("birthdays").getJSONObject(i).toString()));
         }
-    }
+    }*/
 
     public void addBirthday(Context context, Birthday birthday) {
         birthdays.add(birthday);
