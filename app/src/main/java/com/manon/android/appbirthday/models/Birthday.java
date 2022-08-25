@@ -1,5 +1,7 @@
 package com.manon.android.appbirthday.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.manon.android.appbirthday.utils.Util;
 
 import org.json.JSONException;
@@ -10,8 +12,14 @@ import java.util.Comparator;
 import java.util.Date;
 
 public class Birthday {
+    @SerializedName("date")
+    @Expose
     public Date date;
+    @SerializedName("firstname")
+    @Expose
     public String firstname;
+    @SerializedName("lastname")
+    @Expose
     public String lastname;
 
     //    {

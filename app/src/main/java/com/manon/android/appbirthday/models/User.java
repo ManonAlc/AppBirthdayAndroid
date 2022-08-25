@@ -31,7 +31,7 @@ public class User {
 
     public String stringJson;
 
-/*    public User(String json) throws JSONException, ParseException {
+    public User(String json) throws JSONException, ParseException {
 
         stringJson = json;
 
@@ -45,7 +45,7 @@ public class User {
         for (int i = 0; i < jsonArray.length(); i++) {
             birthdays.add(new Birthday(jsonObject.getJSONArray("birthdays").getJSONObject(i).toString()));
         }
-    }*/
+    }
 
     public void addBirthday(Context context, Birthday birthday) {
         birthdays.add(birthday);

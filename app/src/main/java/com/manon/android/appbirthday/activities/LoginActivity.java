@@ -2,6 +2,7 @@ package com.manon.android.appbirthday.activities;
 
 import static com.manon.android.appbirthday.utils.UtilApi.URL_LOGIN;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -142,6 +143,9 @@ public class LoginActivity extends AppCompatActivity implements ApiCallback {
 
         handler.post(() -> {
             Log.d("lol", "success: " + json);
+            Util.setUser(this,json);
+            Intent intent = new Intent(LoginActivity.this, ListActivity.class);
+            startActivity(intent);
             // TODO : Etablisser un comportement lors d'un success
             // TODO : Faites la redirection
 

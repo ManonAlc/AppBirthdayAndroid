@@ -31,6 +31,12 @@
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".activities.ListActivity"
+            android:theme="@style/SplashScreenTheme"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>
